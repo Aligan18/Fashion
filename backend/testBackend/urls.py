@@ -16,8 +16,19 @@ Including another UR
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from address.views import AddressAPICreate, AddressAPIList
+from fashion.views import UserViewSet, ProductsViewSet
+from rest_framework import routers
+
+# router = routers.SimpleRouter()
+# router.register(r'user', UserViewSet)
+# router.register(r'products', ProductsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/address/', AddressAPICreate.as_view()),
+    path('api/v1/address/<int:pk>/', AddressAPIList.as_view())
+
 ]

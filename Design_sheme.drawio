@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-22T09:32:41.290Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="fJWseTsIgw1K7-6pPQ7F" version="21.3.2" type="device">
+<mxfile host="app.diagrams.net" modified="2023-05-23T14:43:54.647Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="EVOgc-2zprn3svxDm5g7" version="21.3.2" type="device">
   <diagram name="Page-1" id="2cc2dc42-3aac-f2a9-1cec-7a8b7cbee084">
-    <mxGraphModel dx="4118" dy="2258" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2995" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1675,7 +1675,7 @@
         <mxCell id="rAR0VihoXTl44CC3sguT-266" value="Город&amp;nbsp;" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="rAR0VihoXTl44CC3sguT-259" vertex="1">
           <mxGeometry x="160" y="300" width="580" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="QDkV-vcCaV8AvGKDY2tg-18" value="Улица&amp;nbsp;" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="rAR0VihoXTl44CC3sguT-259">
+        <mxCell id="QDkV-vcCaV8AvGKDY2tg-18" value="Улица&amp;nbsp;" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" parent="rAR0VihoXTl44CC3sguT-259" vertex="1">
           <mxGeometry x="160" y="370" width="580" height="60" as="geometry" />
         </mxCell>
         <mxCell id="rAR0VihoXTl44CC3sguT-289" value="" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=4;fontFamily=Helvetica;fontSize=11;fontColor=default;endSize=7;shape=connector;exitX=-0.039;exitY=0.433;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.287;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="rAR0VihoXTl44CC3sguT-214" edge="1">
@@ -1899,6 +1899,9 @@
         </mxCell>
         <mxCell id="pDdL7P6bTcJBENyGHpH7-186" value="NEW PRODUCT" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
           <mxGeometry x="4660" y="6070" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6rrvgvM7a9biCadHGt9m-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pDdL7P6bTcJBENyGHpH7-119" target="pDdL7P6bTcJBENyGHpH7-119">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

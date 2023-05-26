@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fashion.apps.FashionConfig',
+    'address.apps.AddressConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
