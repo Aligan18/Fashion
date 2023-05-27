@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fashion.apps.FashionConfig',
     'address.apps.AddressConfig',
+    'baskets.apps.BasketsConfig',
+    'comments.apps.CommentsConfig',
+    'favorites.apps.FavoritesConfig',
+    'orders.apps.OrdersConfig',
+    'users.apps.UsersConfig',
     'rest_framework'
 ]
 

@@ -12,6 +12,6 @@ class AddressAPICreate(generics.CreateAPIView):
     serializer_class = AddressesSerializer
 
 
-class AddressAPIList(generics.RetrieveAPIView):
+class AddressAPIRetrieve(generics.RetrieveAPIView):
     queryset = Addresses.objects.all()
     serializer_class = AddressesSerializer

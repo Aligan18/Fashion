@@ -18,7 +18,8 @@ Including another UR
 from django.contrib import admin
 from django.urls import path, include
 
-from address.views import AddressAPICreate, AddressAPIList
+from address.views import AddressAPICreate, AddressAPIRetrieve
+from baskets.views import BasketsAPICreate, BasketsAPIRetrieve
 from fashion.views import UserViewSet, ProductsViewSet
 from rest_framework import routers
 
@@ -28,7 +29,11 @@ from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('api/v1/address/', AddressAPICreate.as_view()),
-    path('api/v1/address/<int:pk>/', AddressAPIList.as_view())
+    path('api/v1/address/<int:pk>/', AddressAPIRetrieve.as_view()),
+
+    path('api/v1/baskets/', BasketsAPICreate.as_view()),
+    path('api/v1/baskets/<int:pk>/', BasketsAPIRetrieve.as_view()),
 
 ]
