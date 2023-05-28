@@ -35,14 +35,14 @@ class Migration(migrations.Migration):
                 ('favorite_count', models.IntegerField(blank=True, default=0)),
                 ('sale', models.IntegerField(blank=True, default=0)),
                 ('visible', models.BooleanField()),
-                ('products_info', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='baskets.productsinfo')),
+                ('products_info', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.productsinfo')),
             ],
         ),
         migrations.CreateModel(
             name='Baskets',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='baskets.products')),
+                ('product', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='products.products')),
             ],
         ),
     ]

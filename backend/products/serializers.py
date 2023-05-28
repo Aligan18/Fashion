@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from baskets.models import Baskets
+from products.models import Baskets
 
 
 class BasketsSerializers(serializers.ModelSerializer):

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from address.models import Addresses
-from baskets.models import Products
+from products.models import Products
 
 
 class Orders(models.Model):
@@ -12,6 +12,7 @@ class Orders(models.Model):
     STATUS_CHOICES = [
         (NEW, "New"),
         (WORKING, "Working"),
+        (FINISHED, "finished"),
     ]
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=NEW, blank=True)
     county = models.CharField(max_length=100)
@@ -21,6 +22,7 @@ class Orders(models.Model):
     data = models.DateTimeField(auto_now_add=True)
     total_price = models.IntegerField()
     address = models.ForeignKey(Addresses, on_delete=models.PROTECT)
+    hello = models.IntegerField()
 
     def __str__(self):
         return self.phone_number

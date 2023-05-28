@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from comments.models import Comments
-
 
 class Products(models.Model):
     MEN = 'M'
@@ -42,9 +40,8 @@ class Products(models.Model):
 class ProductsInfo(models.Model):
     description = models.TextField()
     seo_text = models.TextField()
-    comments = models.ForeignKey(Comments, on_delete=models.CASCADE, null=True)
 
 
 class Baskets(models.Model):
-    product = models.ForeignKey("Products", on_delete=models.CASCADE, null=True)
+    product = models.ManyToManyField("Products")
 

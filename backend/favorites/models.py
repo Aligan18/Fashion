@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from baskets.models import Products
+from products.models import Products
 from users.models import Users
 
 

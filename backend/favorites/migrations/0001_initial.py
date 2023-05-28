@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('baskets', '0001_initial'),
+        ('products', '0001_initial'),
     ]
 
     operations = [
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Favorites',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='baskets.products')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.products')),
             ],
         ),
     ]

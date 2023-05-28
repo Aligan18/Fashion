@@ -19,21 +19,28 @@ from django.contrib import admin
 from django.urls import path, include
 
 from address.views import AddressAPICreate, AddressAPIRetrieve
-from baskets.views import BasketsAPICreate, BasketsAPIRetrieve
-from fashion.views import UserViewSet, ProductsViewSet
+from products.views import BasketsAPICreate, BasketsAPIRetrieve
+from comments.views import CommentsAPICreate, CommentsAPIDelete, CommentsAPIListAll
+
 from rest_framework import routers
 
 # router = routers.SimpleRouter()
 # router.register(r'user', UserViewSet)
 # router.register(r'products', ProductsViewSet)
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 
     path('api/v1/address/', AddressAPICreate.as_view()),
     path('api/v1/address/<int:pk>/', AddressAPIRetrieve.as_view()),
 
-    path('api/v1/baskets/', BasketsAPICreate.as_view()),
-    path('api/v1/baskets/<int:pk>/', BasketsAPIRetrieve.as_view()),
+    path('api/v1/products/', BasketsAPICreate.as_view()),
+    path('api/v1/products/<int:pk>/', BasketsAPIRetrieve.as_view()),
+
+    path('api/v1/comments/', CommentsAPICreate.as_view()),
+    path('api/v1/comments/', CommentsAPIListAll.as_view()),
+    path('api/v1/comments/<int:pk>/', CommentsAPIDelete.as_view()),
+
 
 ]

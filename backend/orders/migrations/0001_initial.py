@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('address', '0001_initial'),
-        ('baskets', '0001_initial'),
+        ('products', '0001_initial'),
     ]
 
     operations = [
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('count', models.IntegerField()),
                 ('price_per_quantity', models.IntegerField()),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baskets.products')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='products.products')),
             ],
         ),
     ]

@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('comments', '0001_initial'),
         ('orders', '0001_initial'),
-        ('baskets', '0001_initial'),
+        ('products', '0001_initial'),
     ]
 
     operations = [
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('phone_number', models.IntegerField()),
                 ('order_count', models.IntegerField(blank=True, default=0)),
                 ('email', models.EmailField(max_length=254)),
-                ('basket', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baskets.baskets')),
+                ('basket', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='products.products')),
                 ('comment', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='comments.comments')),
                 ('orders', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='orders.orders')),
             ],
