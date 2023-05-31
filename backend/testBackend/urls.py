@@ -19,14 +19,21 @@ from django.contrib import admin
 from django.urls import path, include
 
 from address.views import AddressAPICreate, AddressAPIRetrieve
-from products.views import BasketsAPICreate, BasketsAPIRetrieve
+from orders.views import OrderInfoAPICreate, OrderInfoAPIRetrieve, OrdersAPIListAll, OrdersAPIRetrieve, OrdersAPICreate
+from products.views import BasketsAPICreate, BasketsAPIRetrieve, ProductsAPIListAll,  \
+    ProductsAPICreate, ProductsAPIDelete, ProductInfoAPIRetrieve, ProductInfoAPIUpdate, ProductInfoAPICreate
 from comments.views import CommentsAPICreate, CommentsAPIDelete, CommentsAPIListAll
 
 from rest_framework import routers
 
+
 # router = routers.SimpleRouter()
 # router.register(r'user', UserViewSet)
 # router.register(r'products', ProductsViewSet)
+
+
+class ProductsAPIVisibleList:
+    pass
 
 
 urlpatterns = [
@@ -35,12 +42,29 @@ urlpatterns = [
     path('api/v1/address/', AddressAPICreate.as_view()),
     path('api/v1/address/<int:pk>/', AddressAPIRetrieve.as_view()),
 
-    path('api/v1/products/', BasketsAPICreate.as_view()),
-    path('api/v1/products/<int:pk>/', BasketsAPIRetrieve.as_view()),
+    path('api/v1/baskets/create', BasketsAPICreate.as_view()),
+    path('api/v1/baskets/<int:pk>/', BasketsAPIRetrieve.as_view()),
 
-    path('api/v1/comments/', CommentsAPICreate.as_view()),
+    path('api/v1/comments/create', CommentsAPICreate.as_view()),
     path('api/v1/comments/', CommentsAPIListAll.as_view()),
     path('api/v1/comments/<int:pk>/', CommentsAPIDelete.as_view()),
+    # Get All Comments by product ID
 
+    path('api/v1/orders/create', OrdersAPICreate.as_view()),
+    path('api/v1/orders/<int:pk>/', OrdersAPIRetrieve.as_view()),
+    path('api/v1/orders/', OrdersAPIListAll.as_view()),
+    # Order by user ID
 
+    path('api/v1/order/info/<int:pk>/', OrderInfoAPIRetrieve.as_view()),
+    path('api/v1/order/info/create', OrderInfoAPICreate.as_view()),
+
+    # path('api/v1/comments/<int:pk>/', ProductsAPIVisibleList.as_view()),
+    path('api/v1/products/create', ProductsAPICreate.as_view()),
+    # path('api/v1/products/', ProductsAPIVisibleListByCategory.as_view()),
+    path('api/v1/products/', ProductsAPIListAll.as_view()),
+    path('api/v1/products/<int:pk>/', ProductsAPIDelete.as_view()),
+
+    path('api/v1/products/info/<int:pk>/', ProductInfoAPIRetrieve.as_view()),
+    path('api/v1/products/info/<int:pk>/', ProductInfoAPIUpdate.as_view()),
+    path('api/v1/products/info/create', ProductInfoAPICreate.as_view()),
 ]

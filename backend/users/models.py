@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 from products.models import Baskets
-from orders.models import Orders
 
 
 class Users(models.Model):
@@ -18,7 +17,6 @@ class Users(models.Model):
     order_count = models.IntegerField(default=0, blank=True)
     email = models.EmailField()
     basket = models.ForeignKey(Baskets, on_delete=models.PROTECT)
-    orders = models.ForeignKey(Orders, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.name

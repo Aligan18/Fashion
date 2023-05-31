@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Products(models.Model):
     MEN = 'M'
     WOMEN = 'W'
@@ -29,17 +30,17 @@ class Products(models.Model):
     rating = models.IntegerField(default=5, blank=True)
     favorite_count = models.IntegerField(default=0, blank=True)
     sale = models.IntegerField(default=0, blank=True)
-
     visible = models.BooleanField()
-    products_info = models.ForeignKey("ProductsInfo", on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title
 
 
-class ProductsInfo(models.Model):
+class ProductInfo(models.Model):
     description = models.TextField()
     seo_text = models.TextField()
+    products_info = models.ForeignKey("Products", on_delete=models.CASCADE)
 
 
 class Baskets(models.Model):
