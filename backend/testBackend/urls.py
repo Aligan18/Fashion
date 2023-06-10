@@ -18,18 +18,18 @@ Including another UR
 from django.contrib import admin
 from django.urls import path, include
 
-from address.views import AddressAPICreate, AddressAPIRetrieve
+from address.views import AddressAPICreate, AddressAPIRetrieveUpdateDelete
+from custom_users.views import ActivateUser
 from orders.views import OrderInfoAPICreate, OrderInfoAPIRetrieve, OrdersAPIListAll, OrdersAPIRetrieve, OrdersAPICreate
-from products.views import BasketsAPICreate, BasketsAPIRetrieve, ProductsAPIListAll,  \
-    ProductsAPICreate, ProductsAPIDelete, ProductInfoAPIRetrieve, ProductInfoAPIUpdate, ProductInfoAPICreate
+from products.views import BasketsAPICreate, BasketsAPIRetrieve, ProductsAPIListAll, \
+    ProductsAPICreate, ProductsAPIDelete, ProductInfoAPIRetrieve, ProductInfoAPIUpdate, ProductInfoAPICreate, \
+    ProductsAPIUpdate, ProductsAPIRetrieve
 from comments.views import CommentsAPICreate, CommentsAPIDelete, CommentsAPIListAll
 
 from rest_framework import routers
 
-
 # router = routers.SimpleRouter()
-# router.register(r'user', UserViewSet)
-# router.register(r'products', ProductsViewSet)
+# router.register(r'products', ProductsAPICreate, ProductsAPIListAll)
 
 
 class ProductsAPIVisibleList:
@@ -38,33 +38,40 @@ class ProductsAPIVisibleList:
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('accounts/activate/<uid>/<token>', ActivateUser.as_view({'get': 'activation'}), name='activation'),
 
-    path('api/v1/address/', AddressAPICreate.as_view()),
-    path('api/v1/address/<int:pk>/', AddressAPIRetrieve.as_view()),
+    path('api/v1/address/create', AddressAPICreate.as_view()),
+    path('api/v1/address/<int:pk>/', AddressAPIRetrieveUpdateDelete.as_view()),
 
     path('api/v1/baskets/create', BasketsAPICreate.as_view()),
-    path('api/v1/baskets/<int:pk>/', BasketsAPIRetrieve.as_view()),
+    path('api/v1/baskets/retrieve/<int:pk>/', BasketsAPIRetrieve.as_view()),
 
     path('api/v1/comments/create', CommentsAPICreate.as_view()),
-    path('api/v1/comments/', CommentsAPIListAll.as_view()),
-    path('api/v1/comments/<int:pk>/', CommentsAPIDelete.as_view()),
+    path('api/v1/comments/list_all', CommentsAPIListAll.as_view()),
+    path('api/v1/comments/delete/<int:pk>/', CommentsAPIDelete.as_view()),
     # Get All Comments by product ID
 
     path('api/v1/orders/create', OrdersAPICreate.as_view()),
-    path('api/v1/orders/<int:pk>/', OrdersAPIRetrieve.as_view()),
-    path('api/v1/orders/', OrdersAPIListAll.as_view()),
+    path('api/v1/orders/retrieve/<int:pk>/', OrdersAPIRetrieve.as_view()),
+    path('api/v1/orders/list_all', OrdersAPIListAll.as_view()),
     # Order by user ID
 
-    path('api/v1/order/info/<int:pk>/', OrderInfoAPIRetrieve.as_view()),
+    path('api/v1/order/info/retrieve/<int:pk>/', OrderInfoAPIRetrieve.as_view()),
     path('api/v1/order/info/create', OrderInfoAPICreate.as_view()),
 
-    # path('api/v1/comments/<int:pk>/', ProductsAPIVisibleList.as_view()),
+    # path('api/v1/products/visible_list<int:pk>/', ProductsAPIVisibleList.as_view()),
     path('api/v1/products/create', ProductsAPICreate.as_view()),
-    # path('api/v1/products/', ProductsAPIVisibleListByCategory.as_view()),
-    path('api/v1/products/', ProductsAPIListAll.as_view()),
-    path('api/v1/products/<int:pk>/', ProductsAPIDelete.as_view()),
+    # path('api/v1/products/visible_list_by_category', ProductsAPIVisibleListByCategory.as_view()),
+    path('api/v1/products/list_all', ProductsAPIListAll.as_view()),
+    path('api/v1/products/delete/<int:pk>/', ProductsAPIDelete.as_view()),
+    path('api/v1/products/retrieve/<int:pk>/', ProductsAPIRetrieve.as_view()),
+    path('api/v1/products/update/<int:pk>/', ProductsAPIUpdate.as_view()),
 
-    path('api/v1/products/info/<int:pk>/', ProductInfoAPIRetrieve.as_view()),
-    path('api/v1/products/info/<int:pk>/', ProductInfoAPIUpdate.as_view()),
+    path('api/v1/products/info/retrieve/<int:pk>/', ProductInfoAPIRetrieve.as_view()),
+    path('api/v1/products/info/update/<int:pk>/', ProductInfoAPIUpdate.as_view()),
     path('api/v1/products/info/create', ProductInfoAPICreate.as_view()),
 ]
+
+

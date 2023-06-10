@@ -40,6 +40,16 @@ class ProductsAPICreate(generics.CreateAPIView):
     serializer_class = ProductsSerializers
 
 
+class ProductsAPIRetrieve(generics.RetrieveAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializers
+
+
+class ProductsAPIUpdate(generics.UpdateAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializers
+
+
 class ProductsAPIDelete(generics.DestroyAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializers

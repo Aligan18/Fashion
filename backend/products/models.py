@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -32,7 +33,6 @@ class Products(models.Model):
     sale = models.IntegerField(default=0, blank=True)
     visible = models.BooleanField()
 
-
     def __str__(self):
         return self.title
 
@@ -44,5 +44,4 @@ class ProductInfo(models.Model):
 
 
 class Baskets(models.Model):
-    product = models.ManyToManyField("Products")
-
+    product = models.ManyToManyField("Products", blank=True)
