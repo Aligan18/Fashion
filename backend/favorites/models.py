@@ -7,4 +7,4 @@ from products.models import Products
 
 class Favorites(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ManyToManyField(Products, on_delete=models.CASCADE)

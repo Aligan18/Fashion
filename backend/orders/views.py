@@ -8,20 +8,34 @@ from orders.serializers import OrdersSerializers, OrderInfoSerializers
 
 
 # ORDER VIEWS
+# Admin , Client
 class OrdersAPICreate(generics.CreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrdersSerializers
 
 
+# Admin , Client который сделал заказ
 class OrdersAPIRetrieve(generics.RetrieveAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrdersSerializers
 
 
-class OrdersAPIListAll(generics.ListAPIView):
+# Admin
+class OrdersAPIListAll(generics.ListAPIView): # Все заказы
     queryset = Orders.objects.all()
     serializer_class = OrdersSerializers
 
+
+# Admin , Client который сделал заказ
+class OrdersAPIListAll(generics.ListAPIView): # Все заказы Client автор
+    queryset = Orders.objects.all()
+    serializer_class = OrdersSerializers
+
+
+# Admin
+class OrdersAPIListAll(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrdersSerializers
 #
 # class OrdersAPIByUserId(generics.ListAPIView):
 #     queryset = Orders.objects.all()
@@ -29,12 +43,22 @@ class OrdersAPIListAll(generics.ListAPIView):
 
 
 # ORDER INFO VIEWS
+# Admin , Client
+class OrderInfoAPICreate(generics.CreateAPIView):
+    queryset = OrderInfo.objects.all()
+    serializer_class = OrderInfoSerializers
 
+
+# Admin , Client если он автор заказа
 class OrderInfoAPIRetrieve(generics.RetrieveAPIView):
     queryset = OrderInfo.objects.all()
     serializer_class = OrderInfoSerializers
 
 
-class OrderInfoAPICreate(generics.CreateAPIView):
+# Admin
+class OrderInfoAPIRetrieve(generics.RetrieveUpdateDestroyAPIView):
     queryset = OrderInfo.objects.all()
     serializer_class = OrderInfoSerializers
+
+
+
