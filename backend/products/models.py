@@ -2,6 +2,7 @@ from django.db import models
 
 
 # Create your models here.
+from custom_users.models import User
 
 
 class Products(models.Model):
@@ -43,5 +44,4 @@ class ProductInfo(models.Model):
     products_info = models.ForeignKey("Products", on_delete=models.CASCADE)
 
 
-class Baskets(models.Model):
-    product = models.ManyToManyField("Products", blank=True)
+

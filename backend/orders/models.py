@@ -1,4 +1,3 @@
-
 from django.db import models
 
 # Create your models here.
@@ -24,7 +23,7 @@ class Orders(models.Model):
     data = models.DateTimeField(auto_now_add=True)
     total_price = models.IntegerField()
     address = models.ForeignKey(Addresses, on_delete=models.PROTECT)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     order_info = models.ManyToManyField("OrderInfo")
 
     def __str__(self):
@@ -35,3 +34,4 @@ class OrderInfo(models.Model):
     count = models.IntegerField()
     price_per_quantity = models.IntegerField()
     product = models.ForeignKey(Products, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

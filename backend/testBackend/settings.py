@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'address.apps.AddressConfig',
     'products.apps.ProductsConfig',
     'comments.apps.CommentsConfig',
-    'favorites.apps.FavoritesConfig',
     'orders.apps.OrdersConfig',
     'clients.apps.UsersConfig',
     'admins.apps.AdminsConfig',
