@@ -4,11 +4,10 @@ from djoser.signals import user_registered
 
 from clients.models import Clients
 from custom_users.models import User
-from products.models import Baskets
 
 
 class Admins(models.Model):
-    user = models.OneToOneField(User, on_delete= models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
     surname = models.CharField(max_length=80)
     patronymic = models.CharField(max_length=80)
@@ -34,12 +33,11 @@ def create_profile(sender, user, request, **kwargs):
         )
 
     else:
-        basket = Baskets.objects.create()
         Clients.objects.create(
 
             user=user,
             name=data.get("name", ""),
             surname=data.get("surname", ""),
             patronymic=data.get("patronymic", ""),
-            basket=basket
+
         )

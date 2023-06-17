@@ -36,14 +36,14 @@ class ProductsAPICreate(generics.CreateAPIView):
 
 # All
 
-class VisibleProductsAPIList(generics.ListAPIView):  # Только видемые
+class VisibleProductsAPIList(generics.ListAPIView):  # Только видимые добавить фильрацию по категории
     queryset = Products.objects.all()
     serializer_class = AboutProductsSerializers
     permission_classes = [AllowAny]
 
 
 # Admin
-class ProductsAPIList(generics.ListAPIView):  # Все товары
+class ProductsAPIList(generics.ListAPIView):  # Все товары добавить фильрацию по категории
     queryset = Products.objects.all()
     serializer_class = AboutProductsSerializers
     permission_classes = [IsAdminUser]
@@ -56,13 +56,6 @@ class ProductsAPIRetrieve(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
 
 
-# All
-class VisibleProductsAPIListByCategory(generics.ListAPIView):  # Фильтрация по категории
-    queryset = Products.objects.all()
-    serializer_class = AboutProductsSerializers
-    permission_classes = [AllowAny]
-
-
 # Admin
 class ProductsAPIUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Products.objects.all()
@@ -71,6 +64,12 @@ class ProductsAPIUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Product Info API #################################################################################
+# Admin
+class ProductInfoAPICreate(generics.CreateAPIView):
+    queryset = ProductInfo.objects.all()
+    serializer_class = ProductInfoSerializers
+    permission_classes = [IsAdminUser]
+
 
 # All
 class ProductInfoAPIRetrieve(generics.RetrieveAPIView):

@@ -3,25 +3,21 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
 from address.models import Addresses
 from address.serializers import AddressesSerializer, AboutAddressesSerializer, CreateAddressesSerializer
+from testBackend.permissions import IsOwner, IsClient
+
 
 # Admin  Client
-from testBackend.permissions import IsOwner
-
-
 class AddressAPICreate(generics.CreateAPIView):
     queryset = Addresses.objects.all()
     serializer_class = CreateAddressesSerializer
-
-    # permission_classes = IsAuthenticated
 
     def perform_create(self, serializer):
         serializer.validated_data['user'] = self.request.user
         serializer.save()
 
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser | IsClient]
 
 
 # Admin
@@ -39,14 +35,8 @@ class AddressAPIRetrieve(generics.RetrieveAPIView):
 
 
 # Admin ,   Client создатель
-class AddressAPIUpdate(generics.UpdateAPIView):
+class AddressAPIRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Addresses.objects.all()
     serializer_class = CreateAddressesSerializer
     permission_classes = [IsAdminUser | IsOwner]
 
-
-# Admin ,   Client создатель
-class AddressAPIDelete(generics.DestroyAPIView):
-    queryset = Addresses.objects.all()
-    serializer_class = CreateAddressesSerializer
-    permission_classes = [IsAdminUser | IsOwner]

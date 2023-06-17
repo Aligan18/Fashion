@@ -29,7 +29,7 @@ class AboutProductsSerializers(serializers.ModelSerializer):
 
 
 class AboutBasketsSerializers(serializers.ModelSerializer):
-    basket = AboutProductsSerializers(manu=True)
+    basket = AboutProductsSerializers(many=True)
 
     class Meta:
         model = Clients

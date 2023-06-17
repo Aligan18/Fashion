@@ -1,10 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-from custom_users.models import User
-
-
 class Products(models.Model):
     MEN = 'M'
     WOMEN = 'W'
@@ -42,6 +38,3 @@ class ProductInfo(models.Model):
     description = models.TextField()
     seo_text = models.TextField()
     products_info = models.ForeignKey("Products", on_delete=models.CASCADE)
-
-
-

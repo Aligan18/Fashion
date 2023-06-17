@@ -6,13 +6,14 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 
 from comments.models import Comments
 from comments.serializers import CommentsSerializers, CreateCommentsSerializers, AboutCommentsSerializers
-from testBackend.permissions import IsOwner
+from testBackend.permissions import IsOwner, IsClient
 
 
 # Admin,  Client после покупки
 class CommentsAPICreate(generics.CreateAPIView):
     queryset = Comments.objects.all()
     serializer_class = CreateCommentsSerializers
+    permission_classes = [IsAdminUser | IsClient]
 
 
 #########################################################################
