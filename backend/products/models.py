@@ -1,26 +1,29 @@
 from django.db import models
 
+HEAD = 'H'
+UPPER_BODY = 'UB'
+LOWER_BODY = 'LB'
+LEGS = 'LG'
+UNDERWEAR = 'UW'
+TYPE_CHOICES = [
+    (HEAD, "Головные уборы"),
+    (UPPER_BODY, "Верх тела"),
+    (LOWER_BODY, "Низ тела"),
+    (LEGS, "Ноги"),
+    (UNDERWEAR, "Белье"),
+]
+
+MEN = 'M'
+WOMEN = 'W'
+GENDER_CHOICES = [
+    (MEN, "Men"),
+    (WOMEN, "Women"),
+]
+
 
 class Products(models.Model):
-    MEN = 'M'
-    WOMEN = 'W'
-    GENDER_CHOICES = [
-        (MEN, "Men"),
-        (WOMEN, "Women"),
-    ]
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    HEAD = 'H'
-    UPPER_BODY = 'UB'
-    LOWER_BODY = 'LB'
-    LEGS = 'LG'
-    UNDERWEAR = 'UW'
-    TYPE_CHOICES = [
-        (HEAD, "Головные уборы"),
-        (UPPER_BODY, "Верх тела"),
-        (LOWER_BODY, "Низ тела"),
-        (LEGS, "Ноги"),
-        (UNDERWEAR, "Белье"),
-    ]
+
     type = models.CharField(max_length=2, choices=TYPE_CHOICES)
     image = models.ImageField(upload_to="photos/")
     title = models.CharField(max_length=255)

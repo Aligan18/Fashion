@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'custom_users.apps.CustomUsersConfig',
 
     'rest_framework',
+    'django_filters',
     'djoser'
 ]
 
@@ -142,9 +143,9 @@ MEDIA_URL = '/media/'
 
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_FILTER_BACKENDS': (
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    # ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
 
     'DEFAULT_AUTHENTICATION_CLASSES': [

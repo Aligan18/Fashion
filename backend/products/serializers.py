@@ -23,6 +23,7 @@ class CreateBasketsSerializers(serializers.ModelSerializer):
 
 
 class AboutProductsSerializers(serializers.ModelSerializer):
+
     class Meta:
         model = Products
         fields = '__all__'

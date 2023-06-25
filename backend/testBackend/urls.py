@@ -1,6 +1,6 @@
 
 from django.urls import path, include
-
+from django.contrib import admin
 from address.views import AddressAPICreate, AddressAPIRetrieveUpdateDelete
 from custom_users.views import ActivateUser
 from orders.views import OrderInfoAPICreate, OrderInfoAPIRetrieve, OrdersAPIListAll, OrdersAPIRetrieve, OrdersAPICreate, \
@@ -12,7 +12,7 @@ from comments.views import CommentsAPICreate, CommentsAPIDelete, CommentsAPIList
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('accounts/activate/<uid>/<token>', ActivateUser.as_view({'get': 'activation'}), name='activation'),
@@ -20,8 +20,8 @@ urlpatterns = [
     path('api/v1/address/create', AddressAPICreate.as_view()),
     path('api/v1/address/<int:pk>/', AddressAPIRetrieveUpdateDelete.as_view()),
 
-    path('api/v1/baskets/update/<int:pk>/', BasketsAPIRetrieveUpdate.as_view()),  # id = clients
-    path('api/v1/baskets/list/<int:pk>/', BasketsAPIRetrieve.as_view()),  # id = clients
+    path('api/v1/baskets/update/<int:pk>/', BasketsAPIRetrieveUpdate.as_view()),
+    path('api/v1/baskets/list/<int:pk>/', BasketsAPIRetrieve.as_view()),
 
     path('api/v1/comments/create', CommentsAPICreate.as_view()),
     path('api/v1/comments/list_all', CommentsAPIListAll.as_view()),  # Get All Comments by product ID
@@ -38,7 +38,7 @@ urlpatterns = [
     path('api/v1/order-info/create', OrderInfoAPICreate.as_view()),
     path('api/v1/order-info/rud/<int:pk>/', OrderInfoAPIRetrieveUpdateDestroy.as_view()),
 
-    path('api/v1/products/visible_list<int:pk>/', VisibleProductsAPIList.as_view()),
+    path('api/v1/products/visible_list', VisibleProductsAPIList.as_view()),
     path('api/v1/products/create', ProductsAPICreate.as_view()),
     path('api/v1/products/list_all', ProductsAPIList.as_view()),
     path('api/v1/products/retrieve/<int:pk>/', ProductsAPIRetrieve.as_view()),

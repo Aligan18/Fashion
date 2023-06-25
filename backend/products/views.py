@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 # Create your views here.
 from rest_framework.permissions import IsAdminUser, AllowAny
@@ -10,6 +11,7 @@ from products.serializers import ProductsSerializers, ProductInfoSerializers, \
 
 #################################################################################
 # Admin , Client создатель
+from products.service import ProductsFilter
 from testBackend.permissions import IsOwner
 
 
@@ -36,10 +38,13 @@ class ProductsAPICreate(generics.CreateAPIView):
 
 # All
 
+
 class VisibleProductsAPIList(generics.ListAPIView):  # Только видимые добавить фильрацию по категории
-    queryset = Products.objects.all()
+    queryset = Products.objects.filter(visible=True)
     serializer_class = AboutProductsSerializers
     permission_classes = [AllowAny]
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ProductsFilter
 
 
 # Admin
@@ -47,6 +52,8 @@ class ProductsAPIList(generics.ListAPIView):  # Все товары добави
     queryset = Products.objects.all()
     serializer_class = AboutProductsSerializers
     permission_classes = [IsAdminUser]
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ProductsFilter
 
 
 # All
